@@ -17,6 +17,3 @@ D:\Neumont\Q7\Software Design Principles\Code\FactoryPattern\FactoryPattern\obj\
 D:\Neumont\Q7\Software Design Principles\Code\FactoryPatternGit\FactoryPattern\FactoryPattern\FactoryPattern\bin\Debug\FactoryPattern.exe.config
 D:\Neumont\Q7\Software Design Principles\Code\FactoryPatternGit\FactoryPattern\FactoryPattern\FactoryPattern\obj\Debug\FactoryPattern.exe
 D:\Neumont\Q7\Software Design Principles\Code\FactoryPatternGit\FactoryPattern\FactoryPattern\FactoryPattern\obj\Debug\FactoryPattern.pdb
-D:\NU\07-Spring\Patterns\FactoryPattern\FactoryPattern\FactoryPattern\bin\Debug\FactoryPattern.exe.config
-D:\NU\07-Spring\Patterns\FactoryPattern\FactoryPattern\FactoryPattern\obj\Debug\FactoryPattern.exe
-D:\NU\07-Spring\Patterns\FactoryPattern\FactoryPattern\FactoryPattern\obj\Debug\FactoryPattern.pdb
