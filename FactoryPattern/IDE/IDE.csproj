@@ -52,6 +52,8 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Compile Include="AbstractElement.cs" />
+    <Compile Include="AbstractFactory.cs" />
     <Compile Include="IDEWindow.xaml.cs">
       <DependentUpon>IDEWindow.xaml</DependentUpon>
     </Compile>

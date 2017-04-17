@@ -3,3 +3,6 @@ D:\Neumont\Q7\Software Design Principles\Code\FactoryPattern\FactoryLibrary\bin\
 D:\Neumont\Q7\Software Design Principles\Code\FactoryPattern\FactoryLibrary\obj\Debug\FactoryLibrary.csprojResolveAssemblyReference.cache
 D:\Neumont\Q7\Software Design Principles\Code\FactoryPattern\FactoryLibrary\obj\Debug\FactoryLibrary.dll
 D:\Neumont\Q7\Software Design Principles\Code\FactoryPattern\FactoryLibrary\obj\Debug\FactoryLibrary.pdb
+D:\Neumont\Q7\Software Design Principles\Code\FactoryPatternGit\FactoryPattern\FactoryPattern\FactoryLibrary\obj\Debug\FactoryLibrary.csprojResolveAssemblyReference.cache
+D:\Neumont\Q7\Software Design Principles\Code\FactoryPatternGit\FactoryPattern\FactoryPattern\FactoryLibrary\obj\Debug\FactoryLibrary.dll
+D:\Neumont\Q7\Software Design Principles\Code\FactoryPatternGit\FactoryPattern\FactoryPattern\FactoryLibrary\obj\Debug\FactoryLibrary.pdb
