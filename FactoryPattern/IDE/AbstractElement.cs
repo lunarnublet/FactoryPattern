@@ -15,12 +15,13 @@ namespace IDE
         public int Y { get; set; }
         public string Content { get; set; }
 
-        public AbstractElement(int height, int width, int x, int y)
+        public AbstractElement(string content, int height = 20, int width = 20, int x = 0, int y = 0)
         {
             this.Height = height;
             this.Width = width;
             this.X = x;
             this.Y = y;
         }
+        public abstract string Serialize();
     }
 }

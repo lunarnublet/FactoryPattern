@@ -8,9 +8,9 @@ using IDE;
 
 namespace FactoryPattern
 {
-    class MyButton : AbstractElement
+    class WPFButton : AbstractElement
     {
-        public MyButton(int height, int width, int x, int y) : base(height, width, x, y)
+        public WPFButton(int height, int width, int x, int y) : base(height, width, x, y)
         {
         }
     }

@@ -7,7 +7,7 @@ using IDE;
 
 namespace FactoryPattern
 {
-    class MyFactory : AbstractFactory
+    class WPFFactory : AbstractFactory
     {
         public override string GetBeginnings()
         {
@@ -24,7 +24,7 @@ namespace FactoryPattern
             switch (type)
             {
                 case "button":
-                    return new MyButton(height, width, x, y);
+                    return new WPFButton(height, width, x, y);
                 case "label":
                     return new MyLabel(height, width, x, y);
                 default:
