@@ -40,5 +40,10 @@ namespace IDE
         {
             this.Factory = factory;
         }
+
+        private void Build(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
