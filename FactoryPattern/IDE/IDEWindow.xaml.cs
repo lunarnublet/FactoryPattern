@@ -19,9 +19,26 @@ namespace IDE
     /// </summary>
     public partial class IDEWindow : Window
     {
-        public IDEWindow()
+        private AbstractFactory Factory { get; set; }
+        public List<string> Elements { get; private set; }
+
+        //public void AddElement(string elementName, int height, int width, int x, int y)
+        //{
+        //    Elements.Add(Factory.GetInstance(elementName, height, width, x, y));
+        //}
+
+        //public void AddBeginnings()
+        //{
+        //    Factory.AddBeginnings();
+        //}
+
+        //public void AddEndings()
+        //{
+        //    Factory.AddEndings();
+        //}
+        public IDEWindow(AbstractFactory factory)
         {
-            InitializeComponent();
+            this.Factory = factory;
         }
     }
 }
