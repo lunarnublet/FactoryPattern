@@ -32,55 +32,15 @@ namespace IDE
 
         public IDEWindow(AbstractFactory factory)
         {
+            InitializeComponent();
             Elements = new List<AbstractElement>();
             this.Factory = factory;
-            DoStuff("YourOutput.cs");
-        }
-
-        private void DoStuff(string path)
-        {
-            string s = "";
-            s += Factory.GetBeginnings();
-            foreach (var element in Elements)
-            {
-                s += element.Serialize();
-            }
-            s += Factory.GetEndings();
-
-            StreamWriter writer = new StreamWriter(path);
-            writer.Write(s);
-            writer.Flush();
-            writer.Close();
-
-            StreamReader reader = new StreamReader(path);
-
-            CodeDomProvider codeProvider = CodeDomProvider.CreateProvider("CSharp");
-            string Output = "YourOutput.exe";
-
-            System.CodeDom.Compiler.CompilerParameters parameters = new CompilerParameters();
-            //Make sure we generate an EXE, not a DLL
-            parameters.GenerateExecutable = true;
-            parameters.OutputAssembly = Output;
-            CompilerResults results = codeProvider.CompileAssemblyFromSource(parameters, reader.ReadToEnd());
-
-            if (results.Errors.Count > 0)
-            {
-
-            }
-            else
-            {
-                Process.Start(Output);
-                //Successful Compile
-                //textBox2.ForeColor = Color.Blue;
-                //textBox2.Text = "Success!";
-                ////If we clicked run then launch our EXE
-                //if (ButtonObject.Text == "Run") Process.Start(Output);
-            }
+            //SaveCompileAndRun("YourOutput.cs");
         }
 
         private void Build(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            Factory.Build(Elements);
         }
     }
 }

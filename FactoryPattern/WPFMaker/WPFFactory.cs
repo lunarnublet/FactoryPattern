@@ -4,11 +4,67 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IDE;
+using System.IO;
+using System.CodeDom.Compiler;
+using System.Diagnostics;
 
 namespace WPFMaker
 {
     class WPFFactory : AbstractFactory
     {
+
+        public override void Build(List<AbstractElement> elements)
+        {
+            string s = "";
+            s += GetBeginnings();
+            foreach (var element in elements)
+            {
+                s += element.Serialize();
+            }
+            s += GetEndings();
+
+            StreamWriter writer = new StreamWriter("D:\\YourOutput.cs");
+            writer.Write(s);
+            writer.Flush();
+            writer.Close();
+
+            StreamReader reader = new StreamReader("D:\\YourOutput.cs");
+
+            CodeDomProvider codeProvider = CodeDomProvider.CreateProvider("CSharp");
+            string Output = "YourOutput.exe";
+
+
+
+            System.CodeDom.Compiler.CompilerParameters parameters = new CompilerParameters()
+            {
+                ReferencedAssemblies = { "System.dll", "System.Core.dll",
+                                            "PresentationFramework.dll", "PresentationCore.dll",
+                                            "Microsoft.CSharp.dll", "System.Xaml.dll", "WindowsBase.dll"
+                                            }
+
+            };
+            //Make sure we generate an EXE, not a DLL
+            parameters.GenerateExecutable = true;
+            parameters.OutputAssembly = Output;
+
+
+            CompilerResults results = codeProvider.CompileAssemblyFromSource(parameters, reader.ReadToEnd());
+
+            if (results.Errors.Count > 0)
+            {
+
+            }
+            else
+            {
+                Process.Start(Output);
+                //Successful Compile
+                //textBox2.ForeColor = Color.Blue;
+                //textBox2.Text = "Success!";
+                ////If we clicked run then launch our EXE
+                //if (ButtonObject.Text == "Run") Process.Start(Output);
+            }
+        }
+
         public override string GetBeginnings()
         {
             string s = @"
@@ -49,7 +105,7 @@ namespace WPFMaker
 
             return s;
         }
-        
+
 
         public override string GetEndings()
         {
