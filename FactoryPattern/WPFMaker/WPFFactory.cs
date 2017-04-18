@@ -28,7 +28,7 @@ namespace WPFMaker
             using System.IO;
             using FactoryPattern;
 
-            namespace TheirWPFApplication
+            namespace WPFMaker
     {
         public partial class TheirWindow : Window
         {
@@ -44,7 +44,8 @@ namespace WPFMaker
                 canvas.Width = this.Width;
                 canvas.Height = this.Height;
                 canvas.Background = Brushes.Black;
-                this.Content = canvas;";
+                this.Content = canvas;
+                ";
 
             return s;
         }
@@ -52,8 +53,7 @@ namespace WPFMaker
 
         public override string GetEndings()
         {
-            string s = @"
-                        this.Show();
+            string s = @"this.Show();
                     }
                 }
             }

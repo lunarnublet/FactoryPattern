@@ -8,8 +8,10 @@ namespace WPFMaker
 {
     class Program
     {
+        [STAThread]
         static void Main(string[] args)
         {
+            IDE.IDEWindow IDE = new IDE.IDEWindow(new WPFFactory());
         }
     }
 }
