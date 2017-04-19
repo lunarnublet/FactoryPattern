@@ -7,6 +7,7 @@ using IDE;
 using System.IO;
 using System.CodeDom.Compiler;
 using System.Diagnostics;
+using Microsoft.Build.Evaluation;
 
 namespace WPFMaker
 {
@@ -60,6 +61,11 @@ namespace WPFMaker
                 ////If we clicked run then launch our EXE
                 //if (ButtonObject.Text == "Run") Process.Start(Output);
             }
+
+
+            var p = new Project("project.csproj");
+            p.SetGlobalProperty("Configuration", "Debug");
+            p.Build();
         }
 
         public override string GetBeginnings()
