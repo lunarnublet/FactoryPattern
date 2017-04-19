@@ -25,10 +25,14 @@ namespace IDE
         private AbstractFactory Factory { get; set; }
         public List<AbstractElement> Elements { get; private set; }
 
-        //public void AddElement(string elementName, int height, int width, int x, int y)
-        //{
-        //    Elements.Add(Factory.GetInstance(elementName, height, width, x, y));
-        //}
+        public void AddElement(string elementName, string content, int height, int width, int x, int y)
+        {
+            AbstractElement element = Factory.GetInstance(elementName, content, height, width, x, y);
+            if (element != null)
+            {
+                Elements.Add(element);
+            }
+        }
 
         public IDEWindow(AbstractFactory factory)
         {

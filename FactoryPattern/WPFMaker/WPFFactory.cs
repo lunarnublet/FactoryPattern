@@ -109,6 +109,10 @@ namespace WPFMaker
             return s;
         }
 
+        public override List<string> GetElementTypes()
+        {
+            return new List<string>() { "button", "label" };
+        }
 
         public override string GetEndings()
         {
