@@ -29,10 +29,7 @@ namespace IDE
         public ObservableCollection<string> ComboBoxElements = new ObservableCollection<string>();
         public ObservableCollection<string> ComboBoxTargets = new ObservableCollection<string>();
 
-        //public void AddElement(string elementName, int height, int width, int x, int y)
-        //{
-        //    Elements.Add(Factory.GetInstance(elementName, height, width, x, y));
-        //}
+        private AbstractFactory currentFactory;
 
         public IDEWindow(AbstractFactory factory)
         {
@@ -90,7 +87,8 @@ namespace IDE
             {
                 Elements.Add(element);
                 ElementCanvas.Children.Add(new Label() { Content = element.ToString(), Width = width, Height = height, Margin = new Thickness(x, y, x, y) });
-            } else
+            }
+            else
             {
                 MessageBox.Show("Null element!");
             }
@@ -103,6 +101,20 @@ namespace IDE
                 Elements.RemoveAt(Elements.Count - 1);
                 ElementCanvas.Children.RemoveAt(ElementCanvas.Children.Count - 1);
             }
+        }
+
+        private void TargetChange(object sender, SelectionChangedEventArgs e)
+        {
+            string target = TargetComboBox.SelectedItem.ToString();
+
+            //foreach(var factory in factories)
+            //{
+            //    if (factory.ToString() == target)
+            //    {
+            //        currentFactory = factory;
+            //        break;
+            //    }
+            //}
         }
     }
 }
