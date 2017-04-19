@@ -15,6 +15,5 @@ namespace WpfApp {
 public partial class MainWindow : Window {
 public MainWindow() {
 InitializeComponent();
-Root.Children.Add(new Button(){Content = "foo",Width = 100,Height = 100,Margin = new System.Windows.Thickness(10, 10, 10, 10)});
-Root.Children.Add(new Button(){Content = "foo",Width = 500,Height = 500,Margin = new System.Windows.Thickness(100, 100, 100, 100)});
+Root.Children.Add(new Button(){Content = "hello",Width = 100,Height = 100,Margin = new System.Windows.Thickness(100, 100, 100, 100)});
 }}}

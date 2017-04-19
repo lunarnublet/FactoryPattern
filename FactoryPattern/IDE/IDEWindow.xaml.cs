@@ -23,7 +23,7 @@ namespace IDE
     /// </summary>
     public partial class IDEWindow : Window
     {
-        private AbstractFactory Factory { get; set; }
+        private List<AbstractFactory> Factories { get; set; }
         public List<AbstractElement> Elements { get; private set; }
 
         public ObservableCollection<string> ComboBoxElements = new ObservableCollection<string>();
@@ -34,23 +34,33 @@ namespace IDE
         //    Elements.Add(Factory.GetInstance(elementName, height, width, x, y));
         //}
 
-        public IDEWindow(AbstractFactory factory)
+        public IDEWindow(List<AbstractFactory> factories)
         {
             InitializeComponent();
             Elements = new List<AbstractElement>();
-            this.Factory = factory;
+            this.Factories.AddRange(factories);
             //SaveCompileAndRun("YourOutput.cs");
             var canvas = new Canvas();
 
-            ComboBoxTargets.Add(factory.ToString());
-
-            foreach (var str in factory.GetElementTypes())
+            foreach (AbstractFactory factory in Factories)
             {
-                ComboBoxElements.Add(str);
-            }
+                ComboBoxTargets.Add(factory.ToString());
 
+                foreach (var str in factory.GetElementTypes())
+                {
+                    ComboBoxElements.Add(str);
+                }
+            }
             ElementComboBox.ItemsSource = ComboBoxElements;
             TargetComboBox.ItemsSource = ComboBoxTargets;
+        }
+
+        public void AddFactory(AbstractFactory factory)
+        {
+            if (factory != null)
+            {
+                this.Factories.Add(factory);
+            }
         }
 
         private void Build(object sender, RoutedEventArgs e)
