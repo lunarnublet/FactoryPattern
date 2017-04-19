@@ -35,7 +35,6 @@ namespace IDE
             InitializeComponent();
             Elements = new List<AbstractElement>();
             this.Factory = factory;
-            //SaveCompileAndRun("YourOutput.cs");
         }
 
         private void Build(object sender, RoutedEventArgs e)
