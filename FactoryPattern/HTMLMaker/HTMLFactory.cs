@@ -26,7 +26,7 @@ namespace HTMLMaker
             writer.Flush();
             writer.Close();
 
-            Process.Start("rundll32 url.dll,FileProtocolHandler \"C:\\g\\csc360 workspace\\Factory\\src\\edu\\neumont\\csc360\\ide\\HTMLOutput.html\"");
+            Process.Start("D:\\YourOutput.html");
         }
 
         public override string GetBeginnings()
