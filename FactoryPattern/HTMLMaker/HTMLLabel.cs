@@ -16,8 +16,8 @@ namespace HTMLMaker
         public override string Serialize()
         {
             return "<label style=\" height:" + Height + "px; width:" + 
-                    Width + "px; margin-left: " + X + "px; margin-top: " + 
-                    Y + "px;\">" + Content + "</label>";
+                    Width + "px; left: " + X + "px; top: " + 
+                    Y + "px; position: absolute;\">" + Content + "</label>";
         }
 
         public override string ToString()

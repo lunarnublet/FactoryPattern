@@ -17,7 +17,7 @@ namespace HTMLMaker
         public override string Serialize()
         {
             return "<button type = \"button\" style=\" height:" + Height + "px; width:" + 
-                    Width + "px; margin-left: " + X + "px; margin-top: " + Y + "px;\">" + 
+                    Width + "px; left: " + X + "px; top: " + Y + "px; position: absolute;\">" + 
                     Content + "</button>";
         }
 

@@ -17,7 +17,7 @@ namespace HTMLMaker
             s += GetBeginnings();
             foreach (var element in elements)
             {
-                s += element.Serialize();
+                s += element.Serialize() + "\r\n";
             }
             s += GetEndings();
 
