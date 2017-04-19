@@ -7,7 +7,6 @@ using IDE;
 using System.IO;
 using System.CodeDom.Compiler;
 using System.Diagnostics;
-using Microsoft.Build.Evaluation;
 
 namespace WPFMaker
 {
@@ -88,6 +87,7 @@ namespace WPFMaker
             }
         }
 
+<<<<<<< HEAD
         public override void Build(List<AbstractElement> elements)
         {
             BuildFoo(elements);
@@ -139,6 +139,12 @@ namespace WPFMaker
             //    //if (ButtonObject.Text == "Run") Process.Start(Output);
             //}
 
+=======
+            StreamWriter writer = new StreamWriter("D:\\YourOutput.cs");
+            writer.Write(s);
+            writer.Flush();
+            writer.Close();
+>>>>>>> 1ff4cc0411e5fecb9fa9ee5ef3483937b431508e
         }
 
         public override string GetBeginnings()

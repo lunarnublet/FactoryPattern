@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IDE", "IDE\IDE.csproj", "{5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFMaker", "WPFMaker\WPFMaker.csproj", "{31480E25-32C2-4596-8F40-C8A4FF3271A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HTMLMaker", "HTMLMaker\HTMLMaker.csproj", "{2C405D98-C57D-48E3-89E5-BE1B0082D3C5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{31480E25-32C2-4596-8F40-C8A4FF3271A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{31480E25-32C2-4596-8F40-C8A4FF3271A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{31480E25-32C2-4596-8F40-C8A4FF3271A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C405D98-C57D-48E3-89E5-BE1B0082D3C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C405D98-C57D-48E3-89E5-BE1B0082D3C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C405D98-C57D-48E3-89E5-BE1B0082D3C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C405D98-C57D-48E3-89E5-BE1B0082D3C5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
