@@ -10,7 +10,7 @@ using System.Diagnostics;
 
 namespace WPFMaker
 {
-    class WPFFactory : AbstractFactory
+    public class WPFFactory : AbstractFactory
     {
 
         private void BuildFoo(List<AbstractElement> elements)

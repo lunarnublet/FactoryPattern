@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{31480E25-32C2-4596-8F40-C8A4FF3271A2}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <ProjectGuid>{2193D938-9453-4259-89BE-B5C209690F7A}</ProjectGuid>
+    <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WPFMaker</RootNamespace>
-    <AssemblyName>WPFMaker</AssemblyName>
+    <RootNamespace>Program</RootNamespace>
+    <AssemblyName>Program</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -33,16 +33,10 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
-  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Build" />
-    <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Windows" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,20 +46,24 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WPFLabel.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WPFButton.cs" />
-    <Compile Include="WPFFactory.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HTMLMaker\HTMLMaker.csproj">
+      <Project>{2c405d98-c57d-48e3-89e5-be1b0082d3c5}</Project>
+      <Name>HTMLMaker</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IDE\IDE.csproj">
       <Project>{5fec2c54-19ce-4622-a24a-ec99ad28a3f8}</Project>
       <Name>IDE</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WPFMaker\WPFMaker.csproj">
+      <Project>{31480e25-32c2-4596-8f40-c8a4ff3271a2}</Project>
+      <Name>WPFMaker</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
