@@ -14,6 +14,66 @@ namespace WPFMaker
     class WPFFactory : AbstractFactory
     {
 
+        private void BuildFoo(List<AbstractElement> elements)
+        {
+
+            string s = "";
+            s += "using System;";
+            s += "using System.Collections.Generic;\r\n";
+            s += "using System.Linq;\r\n";
+            s += "using System.Text;\r\n";
+            s += "using System.Threading.Tasks;\r\n";
+            s += "using System.Windows;\r\n";
+            s += "using System.Windows.Controls;\r\n";
+            s += "using System.Windows.Data;\r\n";
+            s += "using System.Windows.Documents;\r\n";
+            s += "using System.Windows.Input;\r\n";
+            s += "using System.Windows.Media;\r\n";
+            s += "using System.Windows.Media.Imaging;\r\n";
+            s += "using System.Windows.Navigation;\r\n";
+            s += "using System.Windows.Shapes;\r\n";
+            s += "namespace WpfApp {\r\n";
+            s += "public partial class MainWindow : Window {\r\n";
+            s += "public MainWindow() {\r\n";
+            s += "InitializeComponent();\r\n";
+
+            foreach (var element in elements)
+            {
+                s += $"Root.Children.Add({element.Serialize()});\r\n";
+            }
+            s += "}";
+            s += "}";
+            s += "}";
+
+
+            using (StreamWriter writer = new StreamWriter("WpfApp/MainWindow.cs"))
+            {
+                writer.Write(s);
+                writer.Flush();
+                writer.Close();
+            }
+
+
+            var proc = new Process
+            {
+                StartInfo = new ProcessStartInfo
+                {
+                    FileName = "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\msbuild.exe",
+                    Arguments = "test.csproj",
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
+            };
+
+            proc.Start();
+            while (!proc.StandardOutput.EndOfStream)
+            {
+                string line = proc.StandardOutput.ReadLine();
+                Console.WriteLine(line);
+            }
+        }
+
         public override void Build(List<AbstractElement> elements)
         {
             string s = "";
@@ -65,10 +125,6 @@ namespace WPFMaker
                 //if (ButtonObject.Text == "Run") Process.Start(Output);
             }
 
-
-            var p = new Project("project.csproj");
-            p.SetGlobalProperty("Configuration", "Debug");
-            p.Build();
         }
 
         public override string GetBeginnings()
@@ -134,6 +190,20 @@ namespace WPFMaker
                 default:
                     return null;
             }
+        }
+
+        public override List<string> GetElements()
+        {
+            return new List<string>()
+            {
+                "button",
+                "label"
+            };
+        }
+
+        public override string ToString()
+        {
+            return "WPF";
         }
     }
 }

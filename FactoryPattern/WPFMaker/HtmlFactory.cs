@@ -40,5 +40,21 @@ namespace WPFMaker
                     return null;
             }
         }
+
+        public override List<string> GetElements()
+        {
+            return new List<string>()
+            {
+                "button",
+                "label",
+                "checkbox",
+                "textbox"
+            };
+        }
+
+        public override string ToString()
+        {
+            return "HTML";
+        }
     }
 }

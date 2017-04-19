@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -25,6 +26,9 @@ namespace IDE
         private AbstractFactory Factory { get; set; }
         public List<AbstractElement> Elements { get; private set; }
 
+        public ObservableCollection<string> ComboBoxElements = new ObservableCollection<string>();
+        public ObservableCollection<string> ComboBoxTargets = new ObservableCollection<string>();
+
         //public void AddElement(string elementName, int height, int width, int x, int y)
         //{
         //    Elements.Add(Factory.GetInstance(elementName, height, width, x, y));
@@ -36,11 +40,47 @@ namespace IDE
             Elements = new List<AbstractElement>();
             this.Factory = factory;
             //SaveCompileAndRun("YourOutput.cs");
+            var canvas = new Canvas();
+
+            ComboBoxTargets.Add(factory.ToString());
+
+            foreach (var str in factory.GetElements())
+            {
+                ComboBoxElements.Add(str);
+            }
+
+            ElementComboBox.ItemsSource = ComboBoxElements;
+            TargetComboBox.ItemsSource = ComboBoxTargets;
         }
 
         private void Build(object sender, RoutedEventArgs e)
         {
             Factory.Build(Elements);
+        }
+
+        private void AddElement(object sender, RoutedEventArgs e)
+        {
+            string content;
+            int x, y, width, height;
+
+            if (int.TryParse())
+            {
+
+            }
+            if (int.TryParse())
+            {
+
+            }
+            if (int.TryParse())
+            {
+
+            }
+            if (int.TryParse())
+            {
+
+            }
+
+            Elements.Add(Factory.GetInstance(ElementComboBox.SelectedItem.ToString(), content, height, width, x, y));
         }
     }
 }

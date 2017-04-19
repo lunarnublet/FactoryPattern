@@ -16,11 +16,20 @@ namespace WPFMaker
         public override string Serialize()
         {
             string s = "";
-            s += "Label " + Content + " = new Label();\r\n";
-            s += Content + ".Height = " + Height + ";\r\n";
-            s += Content + ".Width = " + Width + ";\r\n";
-            s += Content + ".Margin = new System.Windows.Thickness(" + X + "," + Y + ",0,0);\r\n";
-            s += Content + ".Content = " + Content + ";\r\n";
+
+
+            s += "new Label(){";
+            s += $"Content = {Content},";
+            s += $"Width = {Width},";
+            s += $"Height = {Height},";
+            s += $"Margin = new System.Windows.Thickness({X}, {Y}, {X}, {Y})";
+            s += "}";
+
+            //s += "Label " + Content + " = new Label();\r\n";
+            //s += Content + ".Height = " + Height + ";\r\n";
+            //s += Content + ".Width = " + Width + ";\r\n";
+            //s += Content + ".Margin = new System.Windows.Thickness(" + X + "," + Y + ",0,0);\r\n";
+            //s += Content + ".Content = " + Content + ";\r\n";
 
             return s;
         }

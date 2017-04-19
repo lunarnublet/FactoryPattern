@@ -8,6 +8,9 @@ namespace IDE
 {
     public abstract class AbstractFactory
     {
+        public abstract List<string> GetElements();
+        public override abstract string ToString();
+
         public abstract AbstractElement GetInstance(string type, string content, int height, int width, int x, int y);
         public abstract string GetBeginnings();
         public abstract string GetEndings();
