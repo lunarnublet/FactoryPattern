@@ -124,6 +124,7 @@ namespace IDE
                     currentFactory = factory;
                     ComboBoxElements.Clear();
                     ElementCanvas.Children.Clear();
+                    Elements.Clear();
                     foreach (var str in currentFactory.GetElementTypes())
                     {
                         ComboBoxElements.Add(str);
