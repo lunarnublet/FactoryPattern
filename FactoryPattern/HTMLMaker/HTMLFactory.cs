@@ -61,5 +61,10 @@ namespace HTMLMaker
                     return null;
             }
         }
+
+        public override string ToString()
+        {
+            return "HTML";
+        }
     }
 }

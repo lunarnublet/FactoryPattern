@@ -87,64 +87,9 @@ namespace WPFMaker
             }
         }
 
-<<<<<<< HEAD
         public override void Build(List<AbstractElement> elements)
         {
             BuildFoo(elements);
-
-
-            //string s = "";
-            //s += GetBeginnings();
-            //foreach (var element in elements)
-            //{
-            //    s += element.Serialize();
-            //}
-            //s += GetEndings();
-
-            //StreamWriter writer = new StreamWriter("D:\\YourOutput.cs");
-            //writer.Write(s);
-            //writer.Flush();
-            //writer.Close();
-
-            //StreamReader reader = new StreamReader("D:\\YourOutput.cs");
-
-            //CodeDomProvider codeProvider = CodeDomProvider.CreateProvider("CSharp");
-            //string Output = "YourOutput.exe";
-
-
-
-            //System.CodeDom.Compiler.CompilerParameters parameters = new CompilerParameters();
-            ////Make sure we generate an EXE, not a DLL
-            //parameters.GenerateExecutable = true;
-            //parameters.OutputAssembly = Output;
-            //parameters.ReferencedAssemblies.AddRange(new string[]{ "System.dll", "System.Core.dll",
-            //                                "Microsoft.CSharp.dll", "System.Xaml.dll", "PresentationFramework.dll",
-
-            //                                });
-
-
-            //CompilerResults results = codeProvider.CompileAssemblyFromSource(parameters, reader.ReadToEnd());
-
-            //if (results.Errors.Count > 0)
-            //{
-
-            //}
-            //else
-            //{
-            //    Process.Start(Output);
-            //    //Successful Compile
-            //    //textBox2.ForeColor = Color.Blue;
-            //    //textBox2.Text = "Success!";
-            //    ////If we clicked run then launch our EXE
-            //    //if (ButtonObject.Text == "Run") Process.Start(Output);
-            //}
-
-=======
-            StreamWriter writer = new StreamWriter("D:\\YourOutput.cs");
-            writer.Write(s);
-            writer.Flush();
-            writer.Close();
->>>>>>> 1ff4cc0411e5fecb9fa9ee5ef3483937b431508e
         }
 
         public override string GetBeginnings()
