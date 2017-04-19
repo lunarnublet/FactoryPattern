@@ -16,7 +16,7 @@ namespace HTMLMaker
         public override string Serialize()
         {
             return "<select style=\" height:" + Height + "px; width:" +
-                   Width + "px; margin-left: " + X + "px; margin-top: " + Y + "px;\"  >" + "</ button >";
+                   Width + "px; margin-left: " + X + "px; margin-top: " + Y + "px;\">" + "</select>";
         }
     }
 }
