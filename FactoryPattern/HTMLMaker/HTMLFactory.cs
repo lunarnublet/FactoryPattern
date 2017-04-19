@@ -9,7 +9,7 @@ using System.Diagnostics;
 
 namespace HTMLMaker
 {
-    class HTMLFactory : AbstractFactory
+    public class HTMLFactory : AbstractFactory
     {
         public override void Build(List<AbstractElement> elements)
         {

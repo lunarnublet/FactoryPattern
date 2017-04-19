@@ -19,5 +19,10 @@ namespace HTMLMaker
                     Width + "px; margin-left: " + X + "px; margin-top: " + 
                     Y + "px;\"  >" + Content + "</ label >";
         }
+
+        public override string ToString()
+        {
+            return "Label" + (Content == null ? "" : ": " + Content);
+        }
     }
 }

@@ -20,5 +20,10 @@ namespace HTMLMaker
                     Width + "px; margin-left: " + X + "px; margin-top: " + Y + "px;\"  >" + 
                     Content + "</ button >";
         }
+
+        public override string ToString()
+        {
+            return "Button" + (Content == null ? "" : ": " + Content);
+        }
     }
 }

@@ -29,30 +29,26 @@ namespace IDE
         public ObservableCollection<string> ComboBoxElements = new ObservableCollection<string>();
         public ObservableCollection<string> ComboBoxTargets = new ObservableCollection<string>();
 
-        //public void AddElement(string elementName, int height, int width, int x, int y)
-        //{
-        //    Elements.Add(Factory.GetInstance(elementName, height, width, x, y));
-        //}
+        private AbstractFactory currentFactory;
 
         public IDEWindow(List<AbstractFactory> factories)
         {
             InitializeComponent();
             Elements = new List<AbstractElement>();
+            Factories = new List<AbstractFactory>();
             this.Factories.AddRange(factories);
-            //SaveCompileAndRun("YourOutput.cs");
             var canvas = new Canvas();
 
             foreach (AbstractFactory factory in Factories)
             {
-                ComboBoxTargets.Add(factory.ToString());
-
-                foreach (var str in factory.GetElementTypes())
-                {
-                    ComboBoxElements.Add(str);
-                }
+                ComboBoxTargets.Add(factory.ToString());                
             }
+
             ElementComboBox.ItemsSource = ComboBoxElements;
             TargetComboBox.ItemsSource = ComboBoxTargets;
+
+            TargetComboBox.SelectedItem = ComboBoxTargets[0];
+            ElementComboBox.SelectedItem = ComboBoxElements[0];
         }
 
         public void AddFactory(AbstractFactory factory)
@@ -65,7 +61,7 @@ namespace IDE
 
         private void Build(object sender, RoutedEventArgs e)
         {
-            Factory.Build(Elements);
+            currentFactory.Build(Elements);
         }
 
         private void AddElement(object sender, RoutedEventArgs e)
@@ -95,12 +91,14 @@ namespace IDE
             }
 
 
-            AbstractElement element = Factory.GetInstance(ElementComboBox.SelectedItem.ToString(), content, height, width, x, y);
+            AbstractElement element = currentFactory.GetInstance(ElementComboBox.SelectedItem.ToString(), content, height, width, x, y);
             if (element != null)
             {
                 Elements.Add(element);
-                ElementCanvas.Children.Add(new Label() { Content = element.ToString(), Width = width, Height = height, Margin = new Thickness(x, y, x, y) });
-            } else
+                //ElementCanvas.Children.Add(new Label() { Content = element.ToString(), Width = width, Height = height, Margin = new Thickness(x, y, x, y) });
+                ElementCanvas.Children.Add(new Label() { Content = element.ToString(), Margin = new Thickness(x, y, x, y) });
+            }
+            else
             {
                 MessageBox.Show("Null element!");
             }
@@ -114,5 +112,50 @@ namespace IDE
                 ElementCanvas.Children.RemoveAt(ElementCanvas.Children.Count - 1);
             }
         }
+
+        private void TargetChange(object sender, SelectionChangedEventArgs e)
+        {
+            string target = TargetComboBox.SelectedItem.ToString();
+
+            foreach (var factory in Factories)
+            {
+                if (factory.ToString() == target)
+                {
+                    currentFactory = factory;
+                    ComboBoxElements.Clear();
+                    ElementCanvas.Children.Clear();
+                    foreach (var str in currentFactory.GetElementTypes())
+                    {
+                        ComboBoxElements.Add(str);
+                    }
+                    ElementComboBox.SelectedItem = ComboBoxElements[0];
+                    break;
+                }
+            }
+        }
+
+        private void UpdateComboBoxes()
+        {
+            string target = TargetComboBox.SelectedItem.ToString();
+
+            foreach (var factory in Factories)
+            {
+                if (factory.ToString() == target)
+                {
+                    currentFactory = factory;
+                    ComboBoxElements.Clear();
+                    ElementCanvas.Children.Clear();
+                    foreach (var str in currentFactory.GetElementTypes())
+                    {
+                        ComboBoxElements.Add(str);
+                    }
+
+                    ElementComboBox.SelectedItem = ComboBoxElements[0];
+
+                    break;
+                }
+            }
+        }
+
     }
 }
