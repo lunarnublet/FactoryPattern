@@ -7,7 +7,6 @@ using IDE;
 using System.IO;
 using System.CodeDom.Compiler;
 using System.Diagnostics;
-using Microsoft.Build.Evaluation;
 
 namespace WPFMaker
 {
@@ -28,44 +27,6 @@ namespace WPFMaker
             writer.Write(s);
             writer.Flush();
             writer.Close();
-
-            StreamReader reader = new StreamReader("D:\\YourOutput.cs");
-
-            CodeDomProvider codeProvider = CodeDomProvider.CreateProvider("CSharp");
-            string Output = "YourOutput.exe";
-
-
-
-            System.CodeDom.Compiler.CompilerParameters parameters = new CompilerParameters();
-            //Make sure we generate an EXE, not a DLL
-            parameters.GenerateExecutable = true;
-            parameters.OutputAssembly = Output;
-            parameters.ReferencedAssemblies.AddRange(new string[]{ "System.dll", "System.Core.dll",
-                                            "Microsoft.CSharp.dll", "System.Xaml.dll", "PresentationFramework.dll",
-
-                                            });
-
-
-            CompilerResults results = codeProvider.CompileAssemblyFromSource(parameters, reader.ReadToEnd());
-
-            if (results.Errors.Count > 0)
-            {
-
-            }
-            else
-            {
-                Process.Start(Output);
-                //Successful Compile
-                //textBox2.ForeColor = Color.Blue;
-                //textBox2.Text = "Success!";
-                ////If we clicked run then launch our EXE
-                //if (ButtonObject.Text == "Run") Process.Start(Output);
-            }
-
-
-            var p = new Project("project.csproj");
-            p.SetGlobalProperty("Configuration", "Debug");
-            p.Build();
         }
 
         public override string GetBeginnings()
