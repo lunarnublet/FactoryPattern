@@ -16,7 +16,6 @@ namespace WPFMaker
 
         private void BuildFoo(List<AbstractElement> elements)
         {
-
             string s = "";
             s += "using System;";
             s += "using System.Collections.Generic;\r\n";
@@ -45,21 +44,27 @@ namespace WPFMaker
             s += "}";
             s += "}";
 
+            string fileToWrite = "../../WpfApp/MainWindow.xaml.cs";
 
-            using (StreamWriter writer = new StreamWriter("WpfApp/MainWindow.cs"))
+            if (!File.Exists(fileToWrite))
+            {
+                File.Create(fileToWrite);
+            }
+
+            System.Threading.Thread.Sleep(1000);
+            using (StreamWriter writer = new StreamWriter(fileToWrite))
             {
                 writer.Write(s);
                 writer.Flush();
                 writer.Close();
             }
 
-
             var proc = new Process
             {
                 StartInfo = new ProcessStartInfo
                 {
                     FileName = "C:\\Windows\\Microsoft.NET\\Framework\\v4.0.30319\\msbuild.exe",
-                    Arguments = "test.csproj",
+                    Arguments = "../../WpfApp/WpfApp.csproj",
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     CreateNoWindow = true
@@ -72,55 +77,67 @@ namespace WPFMaker
                 string line = proc.StandardOutput.ReadLine();
                 Console.WriteLine(line);
             }
+
+            try
+            {
+                var runBuild = Process.Start("..\\..\\WpfApp\\bin\\Debug\\WpfApp.exe");
+            }
+            catch (System.ComponentModel.Win32Exception)
+            {
+                Console.WriteLine("Failed to run WpfApp.exe");
+            }
         }
 
         public override void Build(List<AbstractElement> elements)
         {
-            string s = "";
-            s += GetBeginnings();
-            foreach (var element in elements)
-            {
-                s += element.Serialize();
-            }
-            s += GetEndings();
-
-            StreamWriter writer = new StreamWriter("D:\\YourOutput.cs");
-            writer.Write(s);
-            writer.Flush();
-            writer.Close();
-
-            StreamReader reader = new StreamReader("D:\\YourOutput.cs");
-
-            CodeDomProvider codeProvider = CodeDomProvider.CreateProvider("CSharp");
-            string Output = "YourOutput.exe";
+            BuildFoo(elements);
 
 
+            //string s = "";
+            //s += GetBeginnings();
+            //foreach (var element in elements)
+            //{
+            //    s += element.Serialize();
+            //}
+            //s += GetEndings();
 
-            System.CodeDom.Compiler.CompilerParameters parameters = new CompilerParameters();
-            //Make sure we generate an EXE, not a DLL
-            parameters.GenerateExecutable = true;
-            parameters.OutputAssembly = Output;
-            parameters.ReferencedAssemblies.AddRange(new string[]{ "System.dll", "System.Core.dll",
-                                            "Microsoft.CSharp.dll", "System.Xaml.dll", "PresentationFramework.dll",
+            //StreamWriter writer = new StreamWriter("D:\\YourOutput.cs");
+            //writer.Write(s);
+            //writer.Flush();
+            //writer.Close();
 
-                                            });
+            //StreamReader reader = new StreamReader("D:\\YourOutput.cs");
+
+            //CodeDomProvider codeProvider = CodeDomProvider.CreateProvider("CSharp");
+            //string Output = "YourOutput.exe";
 
 
-            CompilerResults results = codeProvider.CompileAssemblyFromSource(parameters, reader.ReadToEnd());
 
-            if (results.Errors.Count > 0)
-            {
+            //System.CodeDom.Compiler.CompilerParameters parameters = new CompilerParameters();
+            ////Make sure we generate an EXE, not a DLL
+            //parameters.GenerateExecutable = true;
+            //parameters.OutputAssembly = Output;
+            //parameters.ReferencedAssemblies.AddRange(new string[]{ "System.dll", "System.Core.dll",
+            //                                "Microsoft.CSharp.dll", "System.Xaml.dll", "PresentationFramework.dll",
 
-            }
-            else
-            {
-                Process.Start(Output);
-                //Successful Compile
-                //textBox2.ForeColor = Color.Blue;
-                //textBox2.Text = "Success!";
-                ////If we clicked run then launch our EXE
-                //if (ButtonObject.Text == "Run") Process.Start(Output);
-            }
+            //                                });
+
+
+            //CompilerResults results = codeProvider.CompileAssemblyFromSource(parameters, reader.ReadToEnd());
+
+            //if (results.Errors.Count > 0)
+            //{
+
+            //}
+            //else
+            //{
+            //    Process.Start(Output);
+            //    //Successful Compile
+            //    //textBox2.ForeColor = Color.Blue;
+            //    //textBox2.Text = "Success!";
+            //    ////If we clicked run then launch our EXE
+            //    //if (ButtonObject.Text == "Run") Process.Start(Output);
+            //}
 
         }
 
@@ -191,15 +208,6 @@ namespace WPFMaker
                 default:
                     return null;
             }
-        }
-
-        public override List<string> GetElements()
-        {
-            return new List<string>()
-            {
-                "button",
-                "label"
-            };
         }
 
         public override string ToString()

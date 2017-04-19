@@ -32,8 +32,16 @@
                 <Label Content="Y:"></Label>
                 <TextBox x:Name="YText"></TextBox>
             </DockPanel>
+            <DockPanel>
+                <Label Content="W:"></Label>
+                <TextBox x:Name="WText"></TextBox>
+            </DockPanel>
+            <DockPanel>
+                <Label Content="H:"></Label>
+                <TextBox x:Name="HText"></TextBox>
+            </DockPanel>
             <Button Content="Add" Margin="0, 10, 0, 0" Click="AddElement"></Button>
-            <Button Content="Remove Last"></Button>
+            <Button Content="Remove Last" Click="RemoveLast"></Button>
             <Button Content="Build" Click="Build"></Button>
         </StackPanel>
         <Canvas x:Name="ElementCanvas" Grid.Column="1">

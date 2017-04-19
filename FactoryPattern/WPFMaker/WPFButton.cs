@@ -19,7 +19,7 @@ namespace WPFMaker
             string s = "";
 
             s += "new Button(){";
-            s += $"Content = {Content},";
+            s += $"Content = \"{Content}\",";
             s += $"Width = {Width},";
             s += $"Height = {Height},";
             s += $"Margin = new System.Windows.Thickness({X}, {Y}, {X}, {Y})";
@@ -36,7 +36,7 @@ namespace WPFMaker
 
         public override string ToString()
         {
-            return "WPFButton" + (Content == null ? "" : ": " + Content);
+            return "Button" + (Content == null ? "" : ": " + Content);
         }
     }
 }

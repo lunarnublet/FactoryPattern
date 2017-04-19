@@ -19,7 +19,7 @@ namespace WPFMaker
 
 
             s += "new Label(){";
-            s += $"Content = {Content},";
+            s += $"Content = \"{Content}\",";
             s += $"Width = {Width},";
             s += $"Height = {Height},";
             s += $"Margin = new System.Windows.Thickness({X}, {Y}, {X}, {Y})";
@@ -36,7 +36,7 @@ namespace WPFMaker
 
         public override string ToString()
         {
-            return "WPFLabel" + (Content == null ? "" : ": " + Content);
+            return "Label" + (Content == null ? "" : ": " + Content);
         }
     }
 }

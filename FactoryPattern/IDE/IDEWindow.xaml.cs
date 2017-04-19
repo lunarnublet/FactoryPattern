@@ -44,7 +44,7 @@ namespace IDE
 
             ComboBoxTargets.Add(factory.ToString());
 
-            foreach (var str in factory.GetElements())
+            foreach (var str in factory.GetElementTypes())
             {
                 ComboBoxElements.Add(str);
             }
@@ -60,27 +60,49 @@ namespace IDE
 
         private void AddElement(object sender, RoutedEventArgs e)
         {
-            string content = "";
+            string content = ContentText.Text;
             int x = 0, y = 0, width = 0, height = 0;
 
-            if (int.TryParse(XText.Text, out x))
+            if (!int.TryParse(XText.Text, out x))
             {
-
+                MessageBox.Show("Invalid X");
+                return;
             }
-            if (int.TryParse(XText.Text, out x))
+            else if (!int.TryParse(YText.Text, out y))
             {
-
+                MessageBox.Show("Invalid Y");
+                return;
             }
-            if (int.TryParse(XText.Text, out x))
+            else if (!int.TryParse(WText.Text, out width))
             {
-
+                MessageBox.Show("Invalid W");
+                return;
             }
-            if (int.TryParse(XText.Text, out x))
+            else if (!int.TryParse(HText.Text, out height))
             {
-
+                MessageBox.Show("Invalid H");
+                return;
             }
 
-            Elements.Add(Factory.GetInstance(ElementComboBox.SelectedItem.ToString(), content, height, width, x, y));
+
+            AbstractElement element = Factory.GetInstance(ElementComboBox.SelectedItem.ToString(), content, height, width, x, y);
+            if (element != null)
+            {
+                Elements.Add(element);
+                ElementCanvas.Children.Add(new Label() { Content = element.ToString(), Width = width, Height = height, Margin = new Thickness(x, y, x, y) });
+            } else
+            {
+                MessageBox.Show("Null element!");
+            }
+        }
+
+        private void RemoveLast(object sender, RoutedEventArgs e)
+        {
+            if (Elements.Count > 0)
+            {
+                Elements.RemoveAt(Elements.Count - 1);
+                ElementCanvas.Children.RemoveAt(ElementCanvas.Children.Count - 1);
+            }
         }
     }
 }

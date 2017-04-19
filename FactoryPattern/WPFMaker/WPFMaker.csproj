@@ -50,7 +50,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HTML.cs" />
-    <Compile Include="HtmlFactory.cs" />
     <Compile Include="WPFLabel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

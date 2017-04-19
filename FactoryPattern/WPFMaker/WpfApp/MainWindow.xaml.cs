@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+using System;using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,20 +11,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
-namespace WpfApp1
-{
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
-    public partial class MainWindow : Window
-    {
-        public MainWindow()
-        {
-            InitializeComponent();
-			Root.Children.Add(new Label(){Content="foo", Margin = new Thickness(0, 0, 0, 0)});
-			Root.Children.Add(new Label(){Content="foo", Margin = new Thickness(20, 20, 20, 20)});
-			Root.Children.Add(new Label(){Content="foo", Margin = new Thickness(10, 10, 10, 100)});
-        }
-    }
-}
+namespace WpfApp {
+public partial class MainWindow : Window {
+public MainWindow() {
+InitializeComponent();
+Root.Children.Add(new Button(){Content = "foo",Width = 100,Height = 100,Margin = new System.Windows.Thickness(10, 10, 10, 10)});
+Root.Children.Add(new Button(){Content = "foo",Width = 500,Height = 500,Margin = new System.Windows.Thickness(100, 100, 100, 100)});
+}}}
