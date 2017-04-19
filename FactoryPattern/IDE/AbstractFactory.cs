@@ -15,5 +15,6 @@ namespace IDE
         public abstract string GetBeginnings();
         public abstract string GetEndings();
         public abstract void Build(List<AbstractElement> elements);
+        public abstract List<string> GetElementTypes();
     }
 }

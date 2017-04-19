@@ -96,17 +96,14 @@ namespace WPFMaker
 
 
 
-            System.CodeDom.Compiler.CompilerParameters parameters = new CompilerParameters()
-            {
-                ReferencedAssemblies = { "System.dll", "System.Core.dll",
-                                            "PresentationFramework.dll", "PresentationCore.dll",
-                                            "Microsoft.CSharp.dll", "System.Xaml.dll", "WindowsBase.dll"
-                                            }
-
-            };
+            System.CodeDom.Compiler.CompilerParameters parameters = new CompilerParameters();
             //Make sure we generate an EXE, not a DLL
             parameters.GenerateExecutable = true;
             parameters.OutputAssembly = Output;
+            parameters.ReferencedAssemblies.AddRange(new string[]{ "System.dll", "System.Core.dll",
+                                            "Microsoft.CSharp.dll", "System.Xaml.dll", "PresentationFramework.dll",
+
+                                            });
 
 
             CompilerResults results = codeProvider.CompileAssemblyFromSource(parameters, reader.ReadToEnd());
@@ -168,6 +165,10 @@ namespace WPFMaker
             return s;
         }
 
+        public override List<string> GetElementTypes()
+        {
+            return new List<string>() { "button", "label" };
+        }
 
         public override string GetEndings()
         {

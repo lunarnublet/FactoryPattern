@@ -17,6 +17,7 @@ namespace IDE
 
         public AbstractElement(string content, int height = 20, int width = 20, int x = 0, int y = 0)
         {
+            this.Content = content;
             this.Height = height;
             this.Width = width;
             this.X = x;

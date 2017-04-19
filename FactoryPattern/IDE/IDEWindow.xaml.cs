@@ -60,22 +60,22 @@ namespace IDE
 
         private void AddElement(object sender, RoutedEventArgs e)
         {
-            string content;
-            int x, y, width, height;
+            string content = "";
+            int x = 0, y = 0, width = 0, height = 0;
 
-            if (int.TryParse())
+            if (int.TryParse(XText.Text, out x))
             {
 
             }
-            if (int.TryParse())
+            if (int.TryParse(XText.Text, out x))
             {
 
             }
-            if (int.TryParse())
+            if (int.TryParse(XText.Text, out x))
             {
 
             }
-            if (int.TryParse())
+            if (int.TryParse(XText.Text, out x))
             {
 
             }
