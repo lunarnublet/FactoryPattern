@@ -44,8 +44,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="HTMLButton.cs" />
+    <Compile Include="HTMLCircle.cs" />
     <Compile Include="HTMLFactory.cs" />
     <Compile Include="HTMLLabel.cs" />
+    <Compile Include="HTMLList.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

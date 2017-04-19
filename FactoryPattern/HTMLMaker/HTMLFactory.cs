@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using IDE;
 using System.IO;
+using System.Diagnostics;
 
 namespace HTMLMaker
 {
@@ -24,6 +25,8 @@ namespace HTMLMaker
             writer.Write(s);
             writer.Flush();
             writer.Close();
+
+            Process.Start("rundll32 url.dll,FileProtocolHandler \"C:\\g\\csc360 workspace\\Factory\\src\\edu\\neumont\\csc360\\ide\\HTMLOutput.html\"");
         }
 
         public override string GetBeginnings()
@@ -37,7 +40,7 @@ namespace HTMLMaker
 
         public override List<string> GetElementTypes()
         {
-            return new List<string>() { "button", "label" };
+            return new List<string>() { "button", "label", "circle", "list" };
         }
 
         public override string GetEndings()
@@ -57,6 +60,10 @@ namespace HTMLMaker
                     return new HTMLButton(content, height, width, x, y);
                 case "label":
                     return new HTMLLabel(content, height, width, x, y);
+                case "circle":
+                    return new HTMLCircle(content, height, width, x, y);
+                case "list":
+                    return new HTMLList(content, height, width, x, y);
                 default:
                     return null;
             }
